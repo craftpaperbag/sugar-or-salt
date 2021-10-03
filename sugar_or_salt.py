@@ -1,4 +1,5 @@
 import sys
+import pathlib
 
 def main():
   version()
@@ -7,7 +8,10 @@ def main():
   if infilepath is None:
     print("ファイルパスを第一引数に与えてください")
     return
-  print("ファイルパスは" + infilepath + "です")
+  # 絶対パスに変換
+  infilepath = pathlib.Path(infilepath)
+  print("ファイルパス：")
+  print(infilepath.resolve())
 
 def version():
   print("-"*12)
