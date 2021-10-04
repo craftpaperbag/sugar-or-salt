@@ -1,23 +1,28 @@
 import sys
 import pathlib
+import cv2
 
 def main():
   version()
-  # ファイル名取得
+  # Get filename from argument values.
   infilepath = get_input_file_path()
   if infilepath is None:
     print("ファイルパスを第一引数に与えてください")
     return
-  # 絶対パスに変換
+  # Convert filename to absolute path.
   infilepath = pathlib.Path(infilepath)
   print("ファイルパス：")
   print(infilepath.resolve())
 
+  # Load image.
+  image = cv2.imread(str(infilepath.resolve()))
+  print(image.shape)
+
 def version():
-  print("-"*12)
-  print("sugar or salt")
-  print("ver.0.0.0")
-  print("-"*12)
+  print("-"*16)
+  print("  sugar or salt")
+  print("    ver.0.0.0")
+  print("-"*16)
 
 def get_input_file_path():
   args = sys.argv
